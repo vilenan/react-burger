@@ -1,0 +1,42 @@
+.burger-constructor {
+    padding-top: 100px;
+    padding-left: 16px;
+    padding-right: 16px;
+     display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 200px);
+}
+
+.burger-constructor-ingredients {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-height: 40vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #8585AD transparent;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.burger-constructor-ingredients::-webkit-scrollbar {
+  width: 8px;
+}
+
+.burger-constructor-ingredients::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}
+.burger-constructor-ingredients-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.burger-constructor-total {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+

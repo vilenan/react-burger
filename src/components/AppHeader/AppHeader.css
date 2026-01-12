@@ -1,0 +1,41 @@
+.app-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.app-header-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.app-header-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.app-header-menu-item {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.app-header-menu-item:last-child {
+    margin-left: auto;
+}
+
+.app-item {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.app-item svg{
+    flex-shrink: 0;
+}
