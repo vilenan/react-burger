@@ -1,0 +1,12 @@
+.orderDetails {
+    padding: 120px 40px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orderDetailsCheck {
+    width: 120px;
+    height: 120px;
+   background: url('/Users/vilenan/Desktop/Y_1/react-burger/src/images/graphics.png') no-repeat center / contain;
+}

@@ -4,7 +4,7 @@
     max-height: calc(100vh - 200px);
 }
 
-.ingredients-wrapper {
+.wrapper {
     flex: 0 1 auto;
     display: flex;
     flex-direction: column;
@@ -14,20 +14,20 @@
     overflow-y: auto;
 }
 
-.ingredients-wrapper::-webkit-scrollbar {
+.wrapper::-webkit-scrollbar {
   width: 8px;
 }
 
-.ingredients-wrapper::-webkit-scrollbar-thumb {
+.wrapper::-webkit-scrollbar-thumb {
   background: #8585AD;
 }
 
-.ingredients-wrapper {
+.wrapper {
   scrollbar-width: thin;
   scrollbar-color: #8585AD transparent;
 }
 
-.ingredients-list {
+.list {
     list-style: none;
     margin: 0;
     display: grid;
@@ -36,7 +36,7 @@
     row-gap: 32px;
 }
 
-.ingredients-list-card {
+.listCard {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@
     padding-bottom: 24px;
 }
 
-.ingredients-list-card-info {
+.listCardInfo {
     display: flex;
     align-items: center;
     gap: 4px;

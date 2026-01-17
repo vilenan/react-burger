@@ -1,13 +1,14 @@
-.burger-constructor {
+.burgerConstructor {
     padding-top: 100px;
     padding-left: 16px;
     padding-right: 16px;
      display: flex;
     flex-direction: column;
+    gap: 16px;
     max-height: calc(100vh - 200px);
 }
 
-.burger-constructor-ingredients {
+.ingredients {
     flex: 0 1 auto;
     min-height: 0;
     max-height: 40vh;
@@ -19,20 +20,21 @@
     row-gap: 16px;
 }
 
-.burger-constructor-ingredients::-webkit-scrollbar {
+.ingredients::-webkit-scrollbar {
   width: 8px;
 }
 
-.burger-constructor-ingredients::-webkit-scrollbar-thumb {
+.ingredients::-webkit-scrollbar-thumb {
   background: #8585AD;
 }
-.burger-constructor-ingredients-item {
+
+.ingredientsItem {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.burger-constructor-total {
+.total {
     display: flex;
     align-items: center;
     justify-content: flex-end;

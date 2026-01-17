@@ -1,31 +1,31 @@
-.app-header {
+.header {
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.app-header-logo {
+.logo {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
-.app-header-menu {
+.menu {
     display: flex;
     align-items: center;
     gap: 8px;
     width: 100%;
 }
 
-.app-header-menu-item {
+.menuItem {
     padding: 20px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.app-header-menu-item:last-child {
+.menuItem:last-child {
     margin-left: auto;
 }
 

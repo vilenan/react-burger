@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
-import './BurgerIngredients.css';
+import { IngredientType } from "../../App";
+import styles from './burger-ingredients.module.css';
 import { CurrencyIcon, Tab, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
+type BurgerIngredientsProps = {
+  ingredients: IngredientType[];
+  onIngredientClick: (ingredient: IngredientType) => void;
+};
 
 
-function BurgerIngredients({ ingredients }: { ingredients: any[] }) {
-    const [current, setCurrent] = React.useState('bun');
-    
+function BurgerIngredients({ ingredients, onIngredientClick }: BurgerIngredientsProps) {
+    const [current, setCurrent] = useState('bun');
+    const buns = ingredients.filter(item => item.type === 'bun');
+    const sauces = ingredients.filter(item => item.type === 'sauce');
+    const mains = ingredients.filter(item => item.type === 'main');
+
   return (
-    <section className="ingredients pt-10">
+    <section className={`$styles.ingredients} pt-10`}>
          <h2 className="text text_type_main-large mb-5">Соберите бургер</h2>
 
          <div className="tabs mb-10" style={{ display: 'flex' }}>
@@ -24,20 +32,20 @@ function BurgerIngredients({ ingredients }: { ingredients: any[] }) {
             </Tab>
         </div>
          
-         <ul className='ingredients-wrapper'>
+         <ul className={styles.wrapper}>
             <li>
                 <h3 className="text text_type_main-medium mb-6">Булки</h3>
-                <ul className="ingredients-list pl-4 pr-4">
-                    {ingredients.filter((item => item.type === 'bun')).map((card: any) => (
-                    <li key={card._id}>
-                        <article className="ingredients-list-card">
+                <ul className={`${styles.list} pl-4 pr-4`}>
+                    {ingredients.filter((item => item.type === 'bun')).map((card: IngredientType) => (
+                    <li key={card._id} onClick={() => onIngredientClick(card)}>
+                        <article className={styles.listCard}>
                             <Counter count={1} size="default" extraClass="m-1"/>
                             <img className="pl-4 pr-4" src={card.image} alt={card.name} />
-                            <div className="ingredients-list-card-info">
+                            <div className={styles.listCardInfo}>
+                                <span className="text text_type_digits-default">{card.proteins}</span>
                                 <CurrencyIcon type="primary" />
-                                <span className="text text_type_digits-default">{card.proteins}</span>      
                             </div>
-                            <h3 className="text text_type_main-small">{card.name}</h3>
+                            <h3 className="text text_type_main-default">{card.name}</h3>
                         </article>
                     </li>
                     ))}
@@ -46,16 +54,16 @@ function BurgerIngredients({ ingredients }: { ingredients: any[] }) {
             <li>
                 <h3 className="text text_type_main-medium mb-6">Соусы</h3>
 
-                <ul className="ingredients-list pl-4 pr-4">
-                    {ingredients.filter((item => item.type === 'sauce')).map((card: any) => (
-                    <li key={card._id}>
-                        <article className="ingredients-list-card">
+                <ul className={`${styles.list} pl-4 pr-4`}>
+                    {ingredients.filter((item => item.type === 'sauce')).map((card: IngredientType) => (
+                    <li onClick={() => {onIngredientClick(card)}} key={card._id}>
+                        <article className={styles.listCard}>
                             <img src={card.image} alt={card.name} />
-                            <div className="ingredients-list-card-info">
+                            <div className={styles.listCardInfo}>
+                                <span className="text text_type_digits-default">{card.proteins}</span>
                                 <CurrencyIcon type="primary" />
-                                <span className="text text_type_digits-default">{card.proteins}</span>      
                             </div>
-                            <h3 className="text text_type_main-small">{card.name}</h3>
+                            <h3 className="text text_type_main-default">{card.name}</h3>
                         </article>
                     </li>
                     ))}
@@ -64,16 +72,16 @@ function BurgerIngredients({ ingredients }: { ingredients: any[] }) {
             <li>
                 <h3 className="text text_type_main-medium mb-6">Начинки</h3>
 
-                <ul className="ingredients-list pl-4 pr-4">
-                    {ingredients.filter((item => item.type === 'main')).map((card: any) => (
-                    <li key={card._id}>
-                        <article className="ingredients-list-card">
+                <ul className={`${styles.list} pl-4 pr-4`}>
+                    {ingredients.filter((item => item.type === 'main')).map((card: IngredientType) => (
+                    <li onClick = {() => {onIngredientClick(card)}} key={card._id}>
+                        <article className={styles.listCard}>
                             <img src={card.image} alt={card.name} />
-                            <div className="ingredients-list-card-info">
-                                <CurrencyIcon type="primary" />
-                                <span className="text text_type_digits-default">{card.proteins}</span>      
+                            <div className={styles.listCardInfo}>
+                                <span className="text text_type_digits-default">{card.proteins}</span>
+                                <CurrencyIcon type="primary" />     
                             </div>
-                            <h3 className="text text_type_main-small">{card.name}</h3>
+                            <h3 className="text text_type_main-default">{card.name}</h3>
                         </article>
                     </li>
                     ))}

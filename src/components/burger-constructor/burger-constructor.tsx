@@ -1,15 +1,18 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import './BurgerConstructor.css';
-import {Button, CurrencyIcon, DragIcon, LockIcon, DeleteIcon, ConstructorElement} from '@ya.praktikum/react-developer-burger-ui-components';
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { IngredientType } from '../../App';
+import styles from './burger-constructor.module.css';
+import {Button, CurrencyIcon, DragIcon, ConstructorElement} from '@ya.praktikum/react-developer-burger-ui-components';
 
+type BurgerConstructorProps = {
+    ingredients: IngredientType [];
+    onOrderButtonClick: () => void;
+}
 
-
-function BurgerConstructor({ ingredients }: { ingredients: any[] }) {
+function BurgerConstructor({ ingredients, onOrderButtonClick }: BurgerConstructorProps) {
     const bun = ingredients.find(item => item.type === 'bun');
     return (
-        <section className="burger-constructor" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <section className={styles.burgerConstructor}>
             
             {bun && (
                 <div className="pl-8">
@@ -23,8 +26,8 @@ function BurgerConstructor({ ingredients }: { ingredients: any[] }) {
                 </div>
                 )}
            
-                <div className="burger-constructor-ingredients">
-                    <div className="burger-constructor-ingredients-item">
+                <div className={styles.ingredients}>
+                    <div className={styles.ingredientsItem}>
                         <DragIcon type="primary" />
                         <ConstructorElement
                             text="Краторная булка N-200i (верх)"
@@ -32,7 +35,7 @@ function BurgerConstructor({ ingredients }: { ingredients: any[] }) {
                             thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
                         />
                     </div>
-                    <div className="burger-constructor-ingredients-item">
+                    <div className={styles.ingredientsItem}>
                         <DragIcon type="primary" />
                         <ConstructorElement
                             text="Краторная булка N-200i (верх)"
@@ -40,7 +43,7 @@ function BurgerConstructor({ ingredients }: { ingredients: any[] }) {
                             thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
                         />
                     </div>
-                    <div className="burger-constructor-ingredients-item">
+                    <div className={styles.ingredientsItem}>
                         <DragIcon type="primary" />
                         <ConstructorElement
                             text="Краторная булка N-200i (верх)"
@@ -48,7 +51,7 @@ function BurgerConstructor({ ingredients }: { ingredients: any[] }) {
                             thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
                         />
                     </div>
-                           <div className="burger-constructor-ingredients-item">
+                    <div className={styles.ingredientsItem}>
                         <DragIcon type="primary" />
                         <ConstructorElement
                             text="Краторная булка N-200i (верх)"
@@ -56,7 +59,7 @@ function BurgerConstructor({ ingredients }: { ingredients: any[] }) {
                             thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
                         />
                     </div>
-                    <div className="burger-constructor-ingredients-item">
+                    <div className={styles.ingredientsItem}>
                         <DragIcon type="primary" />
                         <ConstructorElement
                             text="Краторная булка N-200i (верх)"
@@ -64,7 +67,7 @@ function BurgerConstructor({ ingredients }: { ingredients: any[] }) {
                             thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
                         />
                     </div>
-                    <div className="burger-constructor-ingredients-item">
+                    <div className={styles.ingredientsItem}>
                         <DragIcon type="primary" />
                         <ConstructorElement
                             text="Краторная булка N-200i (верх)"
@@ -84,9 +87,9 @@ function BurgerConstructor({ ingredients }: { ingredients: any[] }) {
                     />
                 </div>
                 )}
-                <div className='burger-constructor-total mt-8'>
+                <div className={`${styles.total} mt-8`}>
                     <span className="text text_type_digits-medium" style={{ display: 'flex', alignItems: 'center'}}>610 <CurrencyIcon type="primary" /></span>
-                    <Button htmlType="button" type="primary" size="large" extraClass="ml-2">
+                    <Button onClick={onOrderButtonClick} htmlType="button" type="primary" size="large" extraClass="ml-2">
                         Оформить заказ
                     </Button>
                 </div>
