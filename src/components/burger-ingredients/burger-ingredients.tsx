@@ -17,7 +17,7 @@ function BurgerIngredients({ ingredients, onIngredientClick }: BurgerIngredients
     const mains = ingredients.filter(item => item.type === 'main');
 
   return (
-    <section className={`$styles.ingredients} pt-10`}>
+    <section className={`${styles.ingredients} pt-10`}>
          <h2 className="text text_type_main-large mb-5">Соберите бургер</h2>
 
          <div className="tabs mb-10" style={{ display: 'flex' }}>
