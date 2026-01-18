@@ -8,5 +8,5 @@
 .orderDetailsCheck {
     width: 120px;
     height: 120px;
-   background: url('/Users/vilenan/Desktop/Y_1/react-burger/src/images/graphics.png') no-repeat center / contain;
+   background: url('../../images/graphics.png') no-repeat center / contain;
 }
