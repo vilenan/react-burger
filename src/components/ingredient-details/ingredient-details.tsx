@@ -16,7 +16,7 @@ function IngredientDetails({ name, calories, proteins, fat, carbohydrates, image
     <div className={styles.ingredientDetails}>
       <h2 className="text text_type_main-large">Детали ингредиента</h2>
       <div className={styles.content}>
-        <img className="mb-4" src={image} alt={name} />
+        <img className={`${styles.image} mb-4`} src={image} alt={name} />
         <p className="text text_type_main-medium mb-8">{name}</p>
         <ul className={`${styles.info} text text_type_main-default text_color_inactive`}>
           <li className={`${styles.infoItem} text text_type_main-default`}>Калории, ккал <span>{calories}</span></li>

@@ -8,6 +8,11 @@
     align-items: center;
 }
 
+.image {
+    width: 100%;
+    height: auto;
+}
+
 .info {
     list-style: none;
     padding: 0;

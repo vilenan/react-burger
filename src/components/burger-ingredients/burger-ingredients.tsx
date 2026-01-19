@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { IngredientType } from "../../App";
 import styles from './burger-ingredients.module.css';
 import { CurrencyIcon, Tab, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
+import Ingredient from '../ingredient/ingredient';
 
 type BurgerIngredientsProps = {
-  ingredients: IngredientType[];
-  onIngredientClick: (ingredient: IngredientType) => void;
+    ingredients: IngredientType[];
+    onIngredientClick: (ingredient: IngredientType) => void;
 };
 
 
@@ -16,82 +17,58 @@ function BurgerIngredients({ ingredients, onIngredientClick }: BurgerIngredients
     const sauces = ingredients.filter(item => item.type === 'sauce');
     const mains = ingredients.filter(item => item.type === 'main');
 
-  return (
-    <section className={`${styles.ingredients} pt-10`}>
-         <h2 className="text text_type_main-large mb-5">Соберите бургер</h2>
+    return (
+        <section className={`${styles.ingredients} pt-10`}>
+            <h2 className="text text_type_main-large mb-5">Соберите бургер</h2>
 
-         <div className="tabs mb-10" style={{ display: 'flex' }}>
-            <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
-                Булки
-            </Tab>
-            <Tab value="sauce" active={current === 'sauce'} onClick={setCurrent}>
-                Соусы
-            </Tab>
-            <Tab value="main" active={current === 'main'} onClick={setCurrent}>
-                Начинки
-            </Tab>
-        </div>
-         
-         <ul className={styles.wrapper}>
-            <li>
-                <h3 className="text text_type_main-medium mb-6">Булки</h3>
-                <ul className={`${styles.list} pl-4 pr-4`}>
-                    {ingredients.filter((item => item.type === 'bun')).map((card: IngredientType) => (
-                    <li key={card._id} onClick={() => onIngredientClick(card)}>
-                        <article className={styles.listCard}>
-                            <Counter count={1} size="default" extraClass="m-1"/>
-                            <img className="pl-4 pr-4" src={card.image} alt={card.name} />
-                            <div className={styles.listCardInfo}>
-                                <span className="text text_type_digits-default">{card.proteins}</span>
-                                <CurrencyIcon type="primary" />
-                            </div>
-                            <h3 className="text text_type_main-default">{card.name}</h3>
-                        </article>
-                    </li>
-                    ))}
-                </ul>
-            </li>
-            <li>
-                <h3 className="text text_type_main-medium mb-6">Соусы</h3>
+            <div className={`${styles.tabs} mb-10`}>
+                <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
+                    Булки
+                </Tab>
+                <Tab value="sauce" active={current === 'sauce'} onClick={setCurrent}>
+                    Соусы
+                </Tab>
+                <Tab value="main" active={current === 'main'} onClick={setCurrent}>
+                    Начинки
+                </Tab>
+            </div>
 
-                <ul className={`${styles.list} pl-4 pr-4`}>
-                    {ingredients.filter((item => item.type === 'sauce')).map((card: IngredientType) => (
-                    <li onClick={() => {onIngredientClick(card)}} key={card._id}>
-                        <article className={styles.listCard}>
-                            <img src={card.image} alt={card.name} />
-                            <div className={styles.listCardInfo}>
-                                <span className="text text_type_digits-default">{card.proteins}</span>
-                                <CurrencyIcon type="primary" />
-                            </div>
-                            <h3 className="text text_type_main-default">{card.name}</h3>
-                        </article>
-                    </li>
-                    ))}
-                </ul>
-            </li>
-            <li>
-                <h3 className="text text_type_main-medium mb-6">Начинки</h3>
+            <ul className={styles.wrapper}>
+                <li>
+                    <h3 className="text text_type_main-medium mb-6">Булки</h3>
+                    <ul className={`${styles.list} pl-4 pr-4`}>
+                        {ingredients.filter((item => item.type === 'bun')).map((card: IngredientType) => (
+                            <li onClick={() => onIngredientClick(card)} key={card._id} >
+                                <Ingredient card={card} />
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+                <li>
+                    <h3 className="text text_type_main-medium mb-6">Соусы</h3>
 
-                <ul className={`${styles.list} pl-4 pr-4`}>
-                    {ingredients.filter((item => item.type === 'main')).map((card: IngredientType) => (
-                    <li onClick = {() => {onIngredientClick(card)}} key={card._id}>
-                        <article className={styles.listCard}>
-                            <img src={card.image} alt={card.name} />
-                            <div className={styles.listCardInfo}>
-                                <span className="text text_type_digits-default">{card.proteins}</span>
-                                <CurrencyIcon type="primary" />     
-                            </div>
-                            <h3 className="text text_type_main-default">{card.name}</h3>
-                        </article>
-                    </li>
-                    ))}
-                </ul>
-            </li>
-         </ul>
+                    <ul className={`${styles.list} pl-4 pr-4`}>
+                        {ingredients.filter((item => item.type === 'sauce')).map((card: IngredientType) => (
+                            <li onClick={() => { onIngredientClick(card) }} key={card._id}>
+                                 <Ingredient card={card} />
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+                <li>
+                    <h3 className="text text_type_main-medium mb-6">Начинки</h3>
 
-         
-    </section>
-  );
+                    <ul className={`${styles.list} pl-4 pr-4`}>
+                        {ingredients.filter((item => item.type === 'main')).map((card: IngredientType) => (
+                            <li onClick={() => { onIngredientClick(card) }} key={card._id}>
+                                <Ingredient card={card} />
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    );
 }
 
 // const ingredientPropType = PropTypes.shape({

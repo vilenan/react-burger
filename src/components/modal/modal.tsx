@@ -10,8 +10,8 @@ type ModalProps = {
   children: React.ReactNode;
 };
 
-function Modal({onClose, children }: ModalProps) {
-      useEffect(() => {
+function Modal({ onClose, children }: ModalProps) {
+  useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
@@ -24,8 +24,8 @@ function Modal({onClose, children }: ModalProps) {
     };
   }, [onClose]);
 
-    const modalRoot = document.getElementById("modal-root");
-if (!modalRoot) return null; 
+  const modalRoot = document.getElementById("modal-root");
+  if (!modalRoot) return null;
 
   return createPortal(
     <>
@@ -34,7 +34,7 @@ if (!modalRoot) return null;
         <button className={styles.modalСlose} onClick={onClose}>
           <CloseIcon type="primary" />
         </button>
-       
+
         <div>
           {children}
         </div>

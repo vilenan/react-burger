@@ -35,22 +35,22 @@ function App() {
 
   useEffect(() => {
     fetch(`${API_URL}`)
-    .then((res) => {
-      if (!res.ok) {
+      .then((res) => {
+        if (!res.ok) {
           throw new Error('Ошибка сервера');
         }
         return res.json();
-    })
-    .then((data) => {
-      setIngredients(data.data);
-    })
-    .catch((err) => {
+      })
+      .then((data) => {
+        setIngredients(data.data);
+      })
+      .catch((err) => {
         console.error(err);
         setError(err.message);
       });
   }, []);
 
-    const openIngredientModal = (ingredient: IngredientType) => {
+  const openIngredientModal = (ingredient: IngredientType) => {
     setSelectedIngredient(ingredient);
     setModalType('ingredient');
   };
@@ -72,18 +72,18 @@ function App() {
       <AppHeader />
 
       <main className='App-main'>
-        <BurgerIngredients ingredients={ingredients} onIngredientClick={openIngredientModal}/>
-        <BurgerConstructor ingredients={ingredients} onOrderButtonClick={openOrderModal}/>
+        <BurgerIngredients ingredients={ingredients} onIngredientClick={openIngredientModal} />
+        <BurgerConstructor ingredients={ingredients} onOrderButtonClick={openOrderModal} />
 
         {modalType === 'ingredient' && selectedIngredient && (
           <Modal onClose={closeModal}>
-             <IngredientDetails {...selectedIngredient} />
+            <IngredientDetails {...selectedIngredient} />
           </Modal>
         )}
 
         {modalType === 'order' && (
           <Modal onClose={closeModal}>
-            <OrderDetails/>
+            <OrderDetails />
           </Modal>
         )}
 

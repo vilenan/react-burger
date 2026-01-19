@@ -2,97 +2,71 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { IngredientType } from '../../App';
 import styles from './burger-constructor.module.css';
-import {Button, CurrencyIcon, DragIcon, ConstructorElement} from '@ya.praktikum/react-developer-burger-ui-components';
+import { Button, CurrencyIcon, DragIcon, ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 
 type BurgerConstructorProps = {
-    ingredients: IngredientType [];
+    ingredients: IngredientType[];
     onOrderButtonClick: () => void;
 }
 
 function BurgerConstructor({ ingredients, onOrderButtonClick }: BurgerConstructorProps) {
     const bun = ingredients.find(item => item.type === 'bun');
+
+    const mockIngredients = [
+        { id: 1, name: 'Краторная булка N-20343450i', price: 50 },
+        { id: 2, name: 'Краторная булка N-200i', price: 508 },
+        { id: 3, name: 'Краторная булка N-200i', price: 40 },
+        { id: 4, name: 'Краторная булка N-200i', price: 780 },
+        { id: 5, name: 'Краторная булка N-200i', price: 60 },
+        { id: 6, name: 'Краторная булка N-200i', price: 50 },
+    ];
+
     return (
         <section className={styles.burgerConstructor}>
-            
+
             {bun && (
                 <div className="pl-8">
                     <ConstructorElement
-                    type="top"
-                    isLocked={true}
-                    text={`${bun.name} (верх)`}
-                    price={bun.price}
-                    thumbnail={bun.image}
+                        type="top"
+                        isLocked={true}
+                        text={`${bun.name} (верх)`}
+                        price={bun.price}
+                        thumbnail={bun.image}
                     />
                 </div>
-                )}
-           
-                <div className={styles.ingredients}>
-                    <div className={styles.ingredientsItem}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                            text="Краторная булка N-200i (верх)"
-                            price={50}
-                            thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
-                        />
-                    </div>
-                    <div className={styles.ingredientsItem}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                            text="Краторная булка N-200i (верх)"
-                            price={50}
-                            thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
-                        />
-                    </div>
-                    <div className={styles.ingredientsItem}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                            text="Краторная булка N-200i (верх)"
-                            price={50}
-                            thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
-                        />
-                    </div>
-                    <div className={styles.ingredientsItem}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                            text="Краторная булка N-200i (верх)"
-                            price={50}
-                            thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
-                        />
-                    </div>
-                    <div className={styles.ingredientsItem}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                            text="Краторная булка N-200i (верх)"
-                            price={50}
-                            thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
-                        />
-                    </div>
-                    <div className={styles.ingredientsItem}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                            text="Краторная булка N-200i (верх)"
-                            price={50}
-                            thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
-                        />
-                    </div>
-                </div>
+            )}
+
+            <div className={styles.ingredients}>
+                {
+                    mockIngredients.map(item => (
+                        <div className={styles.ingredientsItem} key={item.id}>
+                            <DragIcon type="primary" />
+                            <ConstructorElement
+                                text={item.name}
+                                price={item.price}
+                                thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
+                            />
+                        </div>
+                    ))
+                }
+            </div>
             {bun && (
                 <div className="pl-8">
                     <ConstructorElement
-                    type="bottom"
-                    isLocked={true}
-                    text={`${bun.name} (низ)`}
-                    price={bun.price}
-                    thumbnail={bun.image}
+                        type="bottom"
+                        isLocked={true}
+                        text={`${bun.name} (низ)`}
+                        price={bun.price}
+                        thumbnail={bun.image}
                     />
                 </div>
-                )}
-                <div className={`${styles.total} mt-8`}>
-                    <span className="text text_type_digits-medium" style={{ display: 'flex', alignItems: 'center'}}>610 <CurrencyIcon type="primary" /></span>
-                    <Button onClick={onOrderButtonClick} htmlType="button" type="primary" size="large" extraClass="ml-2">
-                        Оформить заказ
-                    </Button>
-                </div>
+            )}
+            <div className={`${styles.total} mt-8`}>
+                <span className={`${styles.price} text text_type_digits-medium`}>610 <CurrencyIcon type="primary" /></span>
+                <Button onClick={onOrderButtonClick} htmlType="button" type="primary" size="large" extraClass="ml-2">
+                    Оформить заказ
+                </Button>
+            </div>
         </section>
     );
 }
