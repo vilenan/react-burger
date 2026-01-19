@@ -7,3 +7,9 @@
     text-align: center;
     padding-bottom: 24px;
 }
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

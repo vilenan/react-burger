@@ -4,6 +4,22 @@ import { IngredientType } from '../../App';
 import styles from './burger-constructor.module.css';
 import { Button, CurrencyIcon, DragIcon, ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 
+type MockIngredient = {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+};
+
+const mockIngredients: MockIngredient[] = [
+    { id: 1, name: 'Краторная булка N-20343450i', price: 50, image: "https://code.s3.yandex.net/react/code/sp_1.png" },
+    { id: 2, name: 'Краторная булка N-200i', price: 508, image: "https://code.s3.yandex.net/react/code/sp_1.png" },
+    { id: 3, name: 'Краторная булка N-200i', price: 40, image: "https://code.s3.yandex.net/react/code/sp_1.png" },
+    { id: 4, name: 'Краторная булка N-200i', price: 780, image: "https://code.s3.yandex.net/react/code/sp_1.png" },
+    { id: 5, name: 'Краторная булка N-200i', price: 60, image: "https://code.s3.yandex.net/react/code/sp_1.png" },
+    { id: 6, name: 'Краторная булка N-200i', price: 50, image: "https://code.s3.yandex.net/react/code/sp_1.png" },
+];
+
 type BurgerConstructorProps = {
     ingredients: IngredientType[];
     onOrderButtonClick: () => void;
@@ -11,15 +27,6 @@ type BurgerConstructorProps = {
 
 function BurgerConstructor({ ingredients, onOrderButtonClick }: BurgerConstructorProps) {
     const bun = ingredients.find(item => item.type === 'bun');
-
-    const mockIngredients = [
-        { id: 1, name: 'Краторная булка N-20343450i', price: 50 },
-        { id: 2, name: 'Краторная булка N-200i', price: 508 },
-        { id: 3, name: 'Краторная булка N-200i', price: 40 },
-        { id: 4, name: 'Краторная булка N-200i', price: 780 },
-        { id: 5, name: 'Краторная булка N-200i', price: 60 },
-        { id: 6, name: 'Краторная булка N-200i', price: 50 },
-    ];
 
     return (
         <section className={styles.burgerConstructor}>
@@ -44,7 +51,7 @@ function BurgerConstructor({ ingredients, onOrderButtonClick }: BurgerConstructo
                             <ConstructorElement
                                 text={item.name}
                                 price={item.price}
-                                thumbnail="https://code.s3.yandex.net/react/code/sp_1.png"
+                                thumbnail={item.image}
                             />
                         </div>
                     ))
