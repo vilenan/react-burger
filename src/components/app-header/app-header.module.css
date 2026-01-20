@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.menuItem {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menuItem:last-child {
+    margin-left: auto;
+}
+
+.app-item {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.app-item svg{
+    flex-shrink: 0;
+}

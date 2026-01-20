@@ -1,0 +1,41 @@
+.ingredients {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 200px);
+}
+
+.wrapper {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}
+
+.wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #8585AD transparent;
+}
+
+.tabs {
+  display: flex;
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+    row-gap: 32px;
+}
